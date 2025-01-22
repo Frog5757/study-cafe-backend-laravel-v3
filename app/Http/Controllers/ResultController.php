@@ -12,11 +12,10 @@ class ResultController extends Controller
      */
     public function store(Request $request)
     {
-        $noMessages = json_encode($request->no_messages);
         $userId = auth()->user()->id;
         $result = Result::create([
             'user_id' => $userId,
-            'no_messages' => $request->$noMessages,
+            'no_messages' => $request->no_messages,
         ]);
 
         return response()->json([
