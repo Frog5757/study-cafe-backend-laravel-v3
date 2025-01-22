@@ -16,7 +16,7 @@ class ResultController extends Controller
         $userId = auth()->user()->id;
         $result = Result::create([
             'user_id' => $userId,
-            'no_messages' => $request->no_messages,
+            'no_messages' => $request->noMessages,
         ]);
 
         return response()->json([
