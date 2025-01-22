@@ -8,6 +8,6 @@ class Result extends Model
 {
     protected $fillable = [
         'user_id',  
-        'no_message'
+        'no_messages'
     ];
 }
