@@ -31,4 +31,13 @@ class ResultController extends Controller
             'results' => $results,
         ]);
     }
+    public function destroy($id)
+{
+    $result = Result::find($id);
+    if (!$result) {
+        return response()->json(['message' => '診断結果が見つかりません。'], 404);
+    }
+    $result->delete();
+    return response()->json(['message' => '診断結果を削除しました。']);
+}
 }

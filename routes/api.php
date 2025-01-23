@@ -25,8 +25,8 @@ Route::middleware('auth:sanctum')->post('/logout', function (Request $request) {
     $request->user()->currentAccessToken()->delete();
     return response()->json(['message' => 'Logged out successfully']);
 });
-
 Route::get('/subjects', [SubjectController::class, 'index']);
 Route::get('/units', [UnitController::class, 'index']);
 Route::get('/questions', [QuestionController::class, 'index']);
 Route::middleware('auth:sanctum')->get('/results', [ResultController::class, 'index']);
+Route::middleware('auth:sanctum')->delete('/results/{id}', [ResultController::class, 'destroy']);
