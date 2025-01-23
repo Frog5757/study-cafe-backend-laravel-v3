@@ -23,4 +23,12 @@ class ResultController extends Controller
             'result' => $result
         ]);
     }
+    public function index(Request $request)
+    {
+        $userId = auth()->user()->id;
+        $results = Result::where('user_id', $userId)->get();
+        return response()->json([
+            'results' => $results,
+        ]);
+    }
 }
