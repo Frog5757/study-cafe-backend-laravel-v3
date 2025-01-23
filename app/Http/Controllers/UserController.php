@@ -22,10 +22,12 @@ class UserController extends Controller
         'name' => $request->name,
         'email' => $request->email,
         'password' => Hash::make($request->password),
+        $token = $user->createToken('authToken')->plainTextToken
     ]);
     return response()->json([
         'message' => 'User successfully created',
         'user' => $user,
+        'token' => $token,
     ], 201);
 }
 }
