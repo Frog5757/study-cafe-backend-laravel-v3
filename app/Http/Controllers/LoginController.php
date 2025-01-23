@@ -12,12 +12,12 @@ class LoginController extends Controller
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required|string|min:8',
-            $token = $user->createToken('authToken')->plainTextToken
         ]);
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-           
+            $token = $user->createToken('authToken')->plainTextToken;
+
             return response()->json([
                 'token' => $token,
                 'user' => $user,
